@@ -81,15 +81,6 @@ testimoniosSlider.addEventListener('mouseleave', function () {
     autoSlideInterval = setInterval(nextTestimonio, 5000);
 });
 
-// Footer form
-const footerForm = document.getElementById('footerForm');
-footerForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const emailInput = this.querySelector('input[type="email"]');
-    alert('¡Gracias por suscribirte! Te mantendremos informado sobre nuestras ofertas.');
-    emailInput.value = '';
-});
-
 // Animación de aparición al scroll
 const observerOptions = {
     threshold: 0.1,
@@ -115,67 +106,38 @@ document.querySelectorAll('.cabana-card, .servicio-card').forEach(el => {
 // Carruseles de cabañas
 const cabanaCards = document.querySelectorAll('.cabana-card');
 
-cabanaCards.forEach((card, cardIndex) => {
+document.querySelectorAll('.cabana-card').forEach(card => {
     const carousel = card.querySelector('.cabana-carousel');
     const prevBtn = card.querySelector('.carousel-prev');
     const nextBtn = card.querySelector('.carousel-next');
-    const dots = card.querySelectorAll('.carousel-dot');
-    let currentIndex = 0;
-    const totalImages = 3;
-    let autoSlide;
+    const dots = [...card.querySelectorAll('.carousel-dot')];
+    const total = dots.length;          // 3 imágenes
+    let current = 0;
+    let autoSlide = null;                 // referencia al intervalo
 
-    function updateCarousel() {
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
+    function moveTo(index) {
+        current = (index + total) % total;
+        carousel.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    function nextImage() { moveTo(current + 1); }
+    function prevImage() { moveTo(current - 1); }
+    function startAuto() {
+    }
+    function stopAuto() {
+        clearInterval(autoSlide);
     }
 
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % totalImages;
-        updateCarousel();
-    }
+    prevBtn.addEventListener('click', () => { stopAuto(); prevImage(); startAuto(); });
+    nextBtn.addEventListener('click', () => { stopAuto(); nextImage(); startAuto(); });
+    dots.forEach((dot, idx) => dot.addEventListener('click', () => {
+        stopAuto(); moveTo(idx); startAuto();
+    }));
 
-    function prevImage() {
-        currentIndex = currentIndex === 0 ? totalImages - 1 : currentIndex - 1;
-        updateCarousel();
-    }
+    card.addEventListener('mouseenter', stopAuto);
+    card.addEventListener('mouseleave', startAuto);
 
-    // function startAutoSlide() {
-    //     autoSlide = setInterval(nextImage, 4000);
-    // }
-
-    // function stopAutoSlide() {
-    //     clearInterval(autoSlide);
-    // }
-
-    nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        nextImage();
-        stopAutoSlide();
-        startAutoSlide();
-    });
-
-    prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        prevImage();
-        stopAutoSlide();
-        startAutoSlide();
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-            // stopAutoSlide();
-            // startAutoSlide();
-        });
-    });
-
-    // card.addEventListener('mouseenter', stopAutoSlide);
-    // card.addEventListener('mouseleave', startAutoSlide);
-
-    // startAutoSlide();
+    startAuto();           // arrancar automático
 });
 
 document.addEventListener('DOMContentLoaded', function () {
