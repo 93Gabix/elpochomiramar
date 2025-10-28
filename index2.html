@@ -3,208 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Construcción - Nuestro Proyecto de Cabañas</title>
+    <title>Galería de Construcción - Cabañas El Pocho</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#3B82F6',secondary:'#10B981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{primary:'#3B82F6',secondary:'#10B981'},
+                    borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <style>
-        :where([class^="ri-"])::before { content: "\f3c2"; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f5f0;
-        }
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        .modal {
-            transition: opacity 0.3s ease;
-        }
-        .timeline-line {
-            width: 2px;
-            background-color: #E5E7EB;
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            transform: translateX(-50%);
-        }
-        .timeline-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: #3B82F6;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #3B82F6;
-            cursor: pointer;
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #3B82F6;
-            cursor: pointer;
-        }
-        .custom-checkbox {
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-            user-select: none;
-        }
-        .custom-checkbox input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-color: #2153b8;
-            border: 2px solid #e2e8f0;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-        .custom-checkbox:hover input ~ .checkmark {
-            border-color: #3B82F6;
-        }
-        .custom-checkbox input:checked ~ .checkmark {
-            background-color: #3B82F6;
-            border-color: #3B82F6;
-        }
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-        .custom-checkbox input:checked ~ .checkmark:after {
-            display: block;
-        }
-        .custom-checkbox .checkmark:after {
-            left: 6px;
-            top: 2px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-        .custom-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        .custom-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .switch-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #e2e8f0;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .switch-slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .switch-slider {
-            background-color: #3B82F6;
-        }
-        input:checked + .switch-slider:before {
-            transform: translateX(26px);
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- ESTILOS PROPIOS (después de Tailwind) -->
+    <link rel="stylesheet" href="style.css?v=1.2.0">
+    <link rel="stylesheet" href="script.js?v=1.2.0" defer>
 </head>
+
 <body>
-    <!-- Header flotante -->
-    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <h1 class="text-2xl font-['Pacifico'] text-gray-800">Cabañas El Pocho</h1>
+    <!-- HEADER idéntico al index -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Cabañas El Pocho</h1>
             </div>
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="index.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Inicio</a>
-            </nav>
-            <div class="md:hidden w-10 h-10 flex items-center justify-center">
-                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-                    <i class="ri-menu-line ri-lg"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t border-gray-100">
-            <div class="container mx-auto px-4 py-2">
-                <nav class="flex flex-col space-y-3 py-3">
-                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors font-medium py-2">Inicio</a>
-                </nav>
-            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Contenido principal -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="pt-24 pb-16">
         <div class="container mx-auto px-4">
-            <!-- Título y descripción -->
             <div class="text-center mb-10">
                 <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestra Evolución en Imágenes</h1>
-                <p class="text-gray-600 max-w-2xl mx-auto">Desde la compra del terreno hasta la finalización de nuestras cabañas, cada paso de este hermoso viaje ha sido documentado. Explora nuestra galería cronológica para ver cómo hemos transformado un sueño en realidad.</p>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Desde la compra del terreno hasta la finalización de nuestras cabañas, cada paso de este hermoso viaje ha sido documentado. Explora nuestra galería cronológica para ver cómo hemos transformado un sueño en realidad.
+                </p>
             </div>
 
-            <!-- Filtros y controles -->
+            <!-- BOTONES DE VISTA -->
             <div class="bg-white rounded-lg shadow-sm p-4 mb-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                     <div class="flex items-center gap-3">
                         <h3 class="font-medium text-gray-700">Visualización:</h3>
                         <div class="flex bg-gray-100 rounded-full p-1">
-                            <button id="grid-view-btn" class="bg-white text-gray-800 px-4 py-1 rounded-full shadow-sm !rounded-button whitespace-nowrap">Cuadrícula</button>
-                            <button id="timeline-view-btn" class="text-gray-600 px-4 py-1 rounded-full !rounded-button whitespace-nowrap">Línea de tiempo</button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-4 items-center">
-                        <div class="relative">
+                            <button id="grid-view-btn" class="bg-white text-gray-800 px-4 py-1 rounded-full shadow-sm !rounded-button whitespace-nowrap text-center">Cuadrícula</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Vista de cuadrícula -->
+            <!-- VISTA CUADRÍCULA -->
             <div id="grid-view" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Imagen 1 -->
-                <div class="gallery-item group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300" style="background-color: #fafbfd">
+                <!-- ITEM 1 -->
+                <div class="gallery-item group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300" data-index="0" style="background-color: #fafbfd">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="./img/1.jpeg">
+                        <img src="./img/1.jpeg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                         <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
                             <h3 class="text-white font-semibold">Compra del terreno</h3>
                             <p class="text-white/90 text-sm">El primer paso de nuestro sueño</p>
@@ -219,11 +93,10 @@
                         <p class="text-sm text-gray-600 mt-1">Después de meses de búsqueda, encontramos el lugar perfecto para nuestro proyecto.</p>
                     </div>
                 </div>
-
-                <!-- Imagen 2 -->
+                <!-- ITEM 2 -->
                 <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="./img/2.jpeg">
+                        <img src="./img/2.jpeg" alt="" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                         <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
                             <h3 class="text-white font-semibold">Preparación del terreno</h3>
                             <p class="text-white/90 text-sm">Limpieza y nivelación</p>
@@ -238,503 +111,58 @@
                         <p class="text-sm text-gray-600 mt-1">Comenzamos a preparar el terreno para las futuras construcciones.</p>
                     </div>
                 </div>
-
-                <!-- Imagen 3 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="./img/11.jpeg">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Cimientos</h3>
-                            <p class="text-white/90 text-sm">La base de nuestras cabañas</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-yellow-100 text-yellow-800 px-2.5 py-0.5 rounded">Cimientos</span>
-                            <span class="text-xs text-gray-500">20 marzo 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Construcción de cimientos</h3>
-                        <p class="text-sm text-gray-600 mt-1">Comenzamos a colocar los cimientos para las cabañas.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 4 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="./img/out.jpg">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Estructura</h3>
-                            <p class="text-white/90 text-sm">El esqueleto de madera toma forma</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-orange-100 text-orange-800 px-2.5 py-0.5 rounded">Estructura</span>
-                            <span class="text-xs text-gray-500">15 abril 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Levantamiento de estructuras</h3>
-                        <p class="text-sm text-gray-600 mt-1">Las estructuras de madera comienzan a tomar forma.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 5 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20roof%20installation%2C%20workers%20installing%20roof%20panels%20on%20timber%20frame%20structure%2C%20mountain%20setting%2C%20cabin%20construction%20process%2C%20professional%20construction%20photography%2C%20clear%20blue%20sky&width=800&height=600&seq=5&orientation=landscape" alt="Tejado" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Instalación de tejados</h3>
-                            <p class="text-white/90 text-sm">Protección contra los elementos</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-orange-100 text-orange-800 px-2.5 py-0.5 rounded">Estructura</span>
-                            <span class="text-xs text-gray-500">10 mayo 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Colocación de tejados</h3>
-                        <p class="text-sm text-gray-600 mt-1">Instalamos los tejados para proteger las estructuras.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 6 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20exterior%20walls%20installation%2C%20workers%20installing%20wooden%20siding%20on%20cabin%20frame%2C%20mountain%20backdrop%2C%20cabin%20construction%20mid-stage%2C%20professional%20construction%20photography&width=800&height=600&seq=6&orientation=landscape" alt="Paredes exteriores" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Paredes exteriores</h3>
-                            <p class="text-white/90 text-sm">Cerrando las cabañas</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-orange-100 text-orange-800 px-2.5 py-0.5 rounded">Estructura</span>
-                            <span class="text-xs text-gray-500">5 junio 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Instalación de paredes exteriores</h3>
-                        <p class="text-sm text-gray-600 mt-1">Comenzamos a cerrar las cabañas con las paredes exteriores.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 7 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=cabin%20interior%20construction%2C%20workers%20installing%20insulation%20and%20interior%20walls%2C%20wooden%20cabin%20interior%20framing%2C%20electrical%20wiring%20installation%2C%20construction%20site%20interior%2C%20professional%20photography&width=800&height=600&seq=7&orientation=landscape" alt="Instalaciones" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Instalaciones</h3>
-                            <p class="text-white/90 text-sm">Electricidad y fontanería</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded">Instalaciones</span>
-                            <span class="text-xs text-gray-500">20 julio 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Instalaciones eléctricas y fontanería</h3>
-                        <p class="text-sm text-gray-600 mt-1">Trabajamos en las instalaciones básicas para las cabañas.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 8 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20interior%20finishing%2C%20workers%20installing%20wooden%20interior%20walls%20and%20flooring%2C%20cabin%20interior%20construction%2C%20almost%20complete%20interior%2C%20warm%20wooden%20tones%2C%20professional%20photography&width=800&height=600&seq=8&orientation=landscape" alt="Acabados interiores" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Acabados interiores</h3>
-                            <p class="text-white/90 text-sm">Dando forma al interior</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-red-100 text-red-800 px-2.5 py-0.5 rounded">Acabados</span>
-                            <span class="text-xs text-gray-500">15 septiembre 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Acabados interiores</h3>
-                        <p class="text-sm text-gray-600 mt-1">Comenzamos con los acabados interiores de las cabañas.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 9 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20bathroom%20installation%2C%20workers%20installing%20bathroom%20fixtures%2C%20tiling%2C%20shower%20installation%2C%20cabin%20interior%20construction%2C%20modern%20rustic%20bathroom%20design%2C%20professional%20photography&width=800&height=600&seq=9&orientation=landscape" alt="Baños" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Instalación de baños</h3>
-                            <p class="text-white/90 text-sm">Comodidades modernas</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-red-100 text-red-800 px-2.5 py-0.5 rounded">Acabados</span>
-                            <span class="text-xs text-gray-500">10 octubre 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Instalación de baños</h3>
-                        <p class="text-sm text-gray-600 mt-1">Instalamos los baños completos en cada cabaña.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 10 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20kitchen%20installation%2C%20workers%20installing%20kitchen%20cabinets%20and%20countertops%2C%20rustic%20modern%20kitchen%20design%2C%20cabin%20interior%2C%20almost%20complete%20kitchen%2C%20professional%20photography&width=800&height=600&seq=10&orientation=landscape" alt="Cocinas" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Instalación de cocinas</h3>
-                            <p class="text-white/90 text-sm">El corazón de cada cabaña</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-red-100 text-red-800 px-2.5 py-0.5 rounded">Acabados</span>
-                            <span class="text-xs text-gray-500">5 noviembre 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Instalación de cocinas</h3>
-                        <p class="text-sm text-gray-600 mt-1">Montamos las cocinas completas en cada cabaña.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 11 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20exterior%20finishing%2C%20workers%20painting%20and%20finishing%20wooden%20cabin%20exterior%2C%20deck%20construction%2C%20mountain%20setting%2C%20almost%20complete%20cabin%2C%20professional%20photography&width=800&height=600&seq=11&orientation=landscape" alt="Acabados exteriores" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Acabados exteriores</h3>
-                            <p class="text-white/90 text-sm">Dando el toque final</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-red-100 text-red-800 px-2.5 py-0.5 rounded">Acabados</span>
-                            <span class="text-xs text-gray-500">20 diciembre 2024</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Acabados exteriores</h3>
-                        <p class="text-sm text-gray-600 mt-1">Trabajamos en los acabados exteriores y terrazas.</p>
-                    </div>
-                </div>
-
-                <!-- Imagen 12 -->
-                <div class="gallery-item group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=completed%20wooden%20cabins%20in%20mountain%20setting%2C%20beautiful%20finished%20wooden%20cabins%20with%20deck%2C%20natural%20landscape%2C%20sunny%20day%2C%20professional%20photography%20of%20luxury%20rustic%20cabins%2C%20final%20result&width=800&height=600&seq=12&orientation=landscape" alt="Cabañas terminadas" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <h3 class="text-white font-semibold">Cabañas terminadas</h3>
-                            <p class="text-white/90 text-sm">¡Proyecto completado!</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs font-medium bg-indigo-100 text-indigo-800 px-2.5 py-0.5 rounded">Finalizado</span>
-                            <span class="text-xs text-gray-500">15 febrero 2025</span>
-                        </div>
-                        <h3 class="font-medium text-gray-800">Proyecto completado</h3>
-                        <p class="text-sm text-gray-600 mt-1">Nuestras cabañas están finalmente terminadas y listas para disfrutar.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vista de línea de tiempo -->
-            <div id="timeline-view" class="hidden relative">
-                <div class="timeline-line"></div>
-                
-                <div class="space-y-16 py-8">
-                    <!-- Elemento 1 -->
-                    <div class="relative">
-                        <div class="timeline-dot" style="top: 50%;"></div>
-                        <div class="flex flex-col md:flex-row gap-8 items-center">
-                            <div class="md:w-1/2 md:text-right md:pr-12">
-                                <div class="bg-white p-6 rounded-lg shadow-sm">
-                                    <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded">Inicio</span>
-                                    <h3 class="text-xl font-medium text-gray-800 mt-2">Adquisición del terreno</h3>
-                                    <p class="text-gray-600 mt-2">Después de meses de búsqueda, encontramos el lugar perfecto para nuestro proyecto de cabañas. Un terreno con vistas impresionantes y el entorno natural ideal.</p>
-                                    <p class="text-sm text-gray-500 mt-4">15 enero 2024</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pl-12">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                                    <img src="./img/1.jpeg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Elemento 2 -->
-                    <div class="relative">
-                        <div class="timeline-dot" style="top: 50%;"></div>
-                        <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                            <div class="md:w-1/2 md:text-left md:pl-12">
-                                <div class="bg-white p-6 rounded-lg shadow-sm">
-                                    <span class="text-xs font-medium bg-green-100 text-green-800 px-2.5 py-0.5 rounded">Preparación</span>
-                                    <h3 class="text-xl font-medium text-gray-800 mt-2">Limpieza y nivelación</h3>
-                                    <p class="text-gray-600 mt-2">Comenzamos a preparar el terreno para las futuras construcciones. Limpiamos la vegetación excesiva y nivelamos las áreas donde se construirán las cabañas.</p>
-                                    <p class="text-sm text-gray-500 mt-4">3 febrero 2024</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pr-12">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                                    <img src="./img/2.jpeg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Elemento 3 -->
-                    <div class="relative">
-                        <div class="timeline-dot" style="top: 50%;"></div>
-                        <div class="flex flex-col md:flex-row gap-8 items-center">
-                            <div class="md:w-1/2 md:text-right md:pr-12">
-                                <div class="bg-white p-6 rounded-lg shadow-sm">
-                                    <span class="text-xs font-medium bg-yellow-100 text-yellow-800 px-2.5 py-0.5 rounded">Cimientos</span>
-                                    <h3 class="text-xl font-medium text-gray-800 mt-2">Construcción de cimientos</h3>
-                                    <p class="text-gray-600 mt-2">Comenzamos a colocar los cimientos para las cabañas. Esta fase es crucial para asegurar la estabilidad y durabilidad de las estructuras.</p>
-                                    <p class="text-sm text-gray-500 mt-4">20 marzo 2024</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pl-12">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                                    <img src="./img/11.jpeg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Elemento 4 -->
-                    <div class="relative">
-                        <div class="timeline-dot" style="top: 50%;"></div>
-                        <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                            <div class="md:w-1/2 md:text-left md:pl-12">
-                                <div class="bg-white p-6 rounded-lg shadow-sm">
-                                    <span class="text-xs font-medium bg-orange-100 text-orange-800 px-2.5 py-0.5 rounded">Estructura</span>
-                                    <h3 class="text-xl font-medium text-gray-800 mt-2">Levantamiento de estructuras</h3>
-                                    <p class="text-gray-600 mt-2">Las estructuras de madera comienzan a tomar forma. Utilizamos madera de alta calidad y técnicas tradicionales combinadas con métodos modernos.</p>
-                                    <p class="text-sm text-gray-500 mt-4">15 abril 2024</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pr-12">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                                    <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20frame%20construction%2C%20timber%20frame%20structure%20being%20built%2C%20workers%20assembling%20wooden%20beams%2C%20mountain%20backdrop%2C%20early%20stage%20of%20wooden%20cabin%2C%20construction%20site%2C%20professional%20photography&width=800&height=450&seq=16&orientation=landscape" alt="Estructura" class="w-full h-full object-cover object-top">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Elemento 5 -->
-                    <div class="relative">
-                        <div class="timeline-dot" style="top: 50%;"></div>
-                        <div class="flex flex-col md:flex-row gap-8 items-center">
-                            <div class="md:w-1/2 md:text-right md:pr-12">
-                                <div class="bg-white p-6 rounded-lg shadow-sm">
-                                    <span class="text-xs font-medium bg-red-100 text-red-800 px-2.5 py-0.5 rounded">Acabados</span>
-                                    <h3 class="text-xl font-medium text-gray-800 mt-2">Acabados interiores y exteriores</h3>
-                                    <p class="text-gray-600 mt-2">Trabajamos en los acabados de las cabañas, tanto en el interior como en el exterior. Cada detalle es cuidadosamente considerado para crear un ambiente acogedor y funcional.</p>
-                                    <p class="text-sm text-gray-500 mt-4">15 septiembre 2024</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pl-12">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                                    <img src="https://readdy.ai/api/search-image?query=wooden%20cabin%20interior%20finishing%2C%20workers%20installing%20wooden%20interior%20walls%20and%20flooring%2C%20cabin%20interior%20construction%2C%20almost%20complete%20interior%2C%20warm%20wooden%20tones%2C%20professional%20photography&width=800&height=450&seq=17&orientation=landscape" alt="Acabados interiores" class="w-full h-full object-cover object-top">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Elemento 6 -->
-                    <div class="relative">
-                        <div class="timeline-dot" style="top: 50%;"></div>
-                        <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                            <div class="md:w-1/2 md:text-left md:pl-12">
-                                <div class="bg-white p-6 rounded-lg shadow-sm">
-                                    <span class="text-xs font-medium bg-indigo-100 text-indigo-800 px-2.5 py-0.5 rounded">Finalizado</span>
-                                    <h3 class="text-xl font-medium text-gray-800 mt-2">Proyecto completado</h3>
-                                    <p class="text-gray-600 mt-2">Nuestras cabañas están finalmente terminadas y listas para disfrutar. El resultado final es un conjunto de cabañas que se integran perfectamente con el entorno natural, ofreciendo confort y una experiencia única.</p>
-                                    <p class="text-sm text-gray-500 mt-4">15 febrero 2025</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pr-12">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                                    <img src="https://readdy.ai/api/search-image?query=completed%20wooden%20cabins%20in%20mountain%20setting%2C%20beautiful%20finished%20wooden%20cabins%20with%20deck%2C%20natural%20landscape%2C%20sunny%20day%2C%20professional%20photography%20of%20luxury%20rustic%20cabins%2C%20final%20result&width=800&height=450&seq=18&orientation=landscape" alt="Cabañas terminadas" class="w-full h-full object-cover object-top">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 
-    <!-- Modal para vista detallada -->
-    <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center hidden modal">
-        <div class="relative w-full max-w-4xl mx-4">
-            <button id="close-modal" class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors">
-                <i class="ri-close-line ri-2x"></i>
-            </button>
-            
-            <div class="bg-white rounded-lg overflow-hidden shadow-xl">
-                <div class="relative aspect-video">
-                    <img id="modal-image" src="" alt="Imagen ampliada" class="w-full h-full object-cover object-top">
+    <!-- FOOTER idéntico al index -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Cabañas El Pocho</h3>
+                    <p>Disfruta de una experiencia única en nuestras acogedoras cabañas de madera, rodeadas de
+                        naturaleza y con todas las comodidades para hacer de tu estancia un momento inolvidable.</p>
                 </div>
-                
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-2">
-                        <span id="modal-tag" class="text-xs font-medium bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded">Etapa</span>
-                        <span id="modal-date" class="text-sm text-gray-500">Fecha</span>
-                    </div>
-                    <h3 id="modal-title" class="text-xl font-medium text-gray-800">Título de la imagen</h3>
-                    <p id="modal-description" class="text-gray-600 mt-2">Descripción detallada de la imagen y la etapa del proyecto que representa.</p>
+
+                <div class="footer-column">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#cabanas">Cabañas</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
                 </div>
-                
-                <div class="flex justify-between items-center p-4 border-t border-gray-100">
-                    <button id="prev-image" class="text-gray-700 hover:text-primary transition-colors flex items-center !rounded-button whitespace-nowrap">
-                        <i class="ri-arrow-left-line mr-2"></i>
-                        Anterior
-                    </button>
-                    <div class="text-sm text-gray-500">
-                        <span id="current-image">1</span> de <span id="total-images">12</span>
-                    </div>
-                    <button id="next-image" class="text-gray-700 hover:text-primary transition-colors flex items-center !rounded-button whitespace-nowrap">
-                        Siguiente
-                        <i class="ri-arrow-right-line ml-2"></i>
-                    </button>
+
+                <div class="footer-column">
+                    <h3>Cabañas</h3>
+                    <ul class="footer-links">
+                        <li><a href="#cabanas">Tu Refugio Soñado</a></li>
+                        <li><a href="#cabanas">Encanto Natural</a></li>
+                        <li><a href="#cabanas">Escapá a la Tranquilidad</a></li>
+                    </ul>
                 </div>
+
+                <!-- <div class="footer-column">
+                    <h3>Boletín informativo</h3>
+                    <p>Suscríbete para recibir nuestras ofertas especiales y novedades.</p>
+                    <form class="footer-form" id="footerForm">
+                        <input type="email" placeholder="Tu email" class="form-control" required>
+                        <button type="submit" class="btn">Suscribirse</button>
+                    </form>
+                </div> -->
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cabañas El Pocho. Todos los derechos reservados.</p>
             </div>
         </div>
-    </div>
+    </footer>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Toggle mobile menu
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Toggle view
-            const gridViewBtn = document.getElementById('grid-view-btn');
-            const timelineViewBtn = document.getElementById('timeline-view-btn');
-            const gridView = document.getElementById('grid-view');
-            const timelineView = document.getElementById('timeline-view');
-            
-            gridViewBtn.addEventListener('click', function() {
-                gridView.classList.remove('hidden');
-                timelineView.classList.add('hidden');
-                gridViewBtn.classList.add('bg-white', 'shadow-sm', 'text-gray-800');
-                gridViewBtn.classList.remove('text-gray-600');
-                timelineViewBtn.classList.remove('bg-white', 'shadow-sm', 'text-gray-800');
-                timelineViewBtn.classList.add('text-gray-600');
-            });
-            
-            timelineViewBtn.addEventListener('click', function() {
-                gridView.classList.add('hidden');
-                timelineView.classList.remove('hidden');
-                timelineViewBtn.classList.add('bg-white', 'shadow-sm', 'text-gray-800');
-                timelineViewBtn.classList.remove('text-gray-600');
-                gridViewBtn.classList.remove('bg-white', 'shadow-sm', 'text-gray-800');
-                gridViewBtn.classList.add('text-gray-600');
-            });
-        });
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            let currentIndex = 0;
-            const galleryData = [
-                {
-                    img: 'https://readdy.ai/api/search-image?query=beautiful%20mountain%20terrain%20with%20trees%2C%20natural%20landscape%2C%20perfect%20for%20building%20cabins%2C%20sunny%20day%2C%20high%20quality%20photorealistic%20image%2C%20no%20buildings%20visible%2C%20just%20nature&width=800&height=600&seq=1&orientation=landscape',
-                    title: 'Adquisición del terreno',
-                    description: 'Después de meses de búsqueda, encontramos el lugar perfecto para nuestro proyecto de cabañas. Un terreno con vistas impresionantes y el entorno natural ideal para crear un espacio de descanso y conexión con la naturaleza. La compra del terreno marcó el inicio de este emocionante proyecto.',
-                    tag: 'Inicio',
-                    tagClass: 'bg-blue-100 text-blue-800',
-                    date: '15 enero 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=land%20clearing%20for%20construction%2C%20workers%20with%20machinery%20clearing%20trees%20and%20rocks%2C%20preparing%20mountain%20terrain%20for%20building%2C%20sunny%20day%2C%20realistic%20photography%20style%2C%20construction%20site%20preparation&width=800&height=600&seq=2&orientation=landscape',
-                    title: 'Limpieza y nivelación',
-                    description: 'Comenzamos a preparar el terreno para las futuras construcciones. Limpiamos la vegetación excesiva y nivelamos las áreas donde se construirán las cabañas, respetando al máximo el entorno natural y preservando los árboles más significativos del terreno.',
-                    tag: 'Preparación',
-                    tagClass: 'bg-green-100 text-green-800',
-                    date: '3 febrero 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=foundation%20construction%20for%20wooden%20cabins%2C%20concrete%20foundation%20being%20poured%2C%20construction%20workers%2C%20mountain%20setting%2C%20early%20stage%20of%20cabin%20building%2C%20professional%20construction%20photography&width=800&height=600&seq=3&orientation=landscape',
-                    title: 'Construcción de cimientos',
-                    description: 'Comenzamos a colocar los cimientos para las cabañas. Esta fase es crucial para asegurar la estabilidad y durabilidad de las estructuras. Utilizamos técnicas y materiales que garantizan una base sólida mientras minimizan el impacto ambiental.',
-                    tag: 'Cimientos',
-                    tagClass: 'bg-yellow-100 text-yellow-800',
-                    date: '20 marzo 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20frame%20construction%2C%20timber%20frame%20structure%20being%20built%2C%20workers%20assembling%20wooden%20beams%2C%20mountain%20backdrop%2C%20early%20stage%20of%20wooden%20cabin%2C%20construction%20site%2C%20professional%20photography&width=800&height=600&seq=4&orientation=landscape',
-                    title: 'Levantamiento de estructuras',
-                    description: 'Las estructuras de madera comienzan a tomar forma. Utilizamos madera de alta calidad y técnicas tradicionales combinadas con métodos modernos para crear estructuras resistentes y estéticamente atractivas que se integran perfectamente con el entorno.',
-                    tag: 'Estructura',
-                    tagClass: 'bg-orange-100 text-orange-800',
-                    date: '15 abril 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20roof%20installation%2C%20workers%20installing%20roof%20panels%20on%20timber%20frame%20structure%2C%20mountain%20setting%2C%20cabin%20construction%20process%2C%20professional%20construction%20photography%2C%20clear%20blue%20sky&width=800&height=600&seq=5&orientation=landscape',
-                    title: 'Colocación de tejados',
-                    description: 'Instalamos los tejados para proteger las estructuras. Elegimos materiales duraderos y eficientes energéticamente, que ofrecen una excelente protección contra los elementos mientras mantienen la estética natural de las cabañas.',
-                    tag: 'Estructura',
-                    tagClass: 'bg-orange-100 text-orange-800',
-                    date: '10 mayo 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20exterior%20walls%20installation%2C%20workers%20installing%20wooden%20siding%20on%20cabin%20frame%2C%20mountain%20backdrop%2C%20cabin%20construction%20mid-stage%2C%20professional%20construction%20photography&width=800&height=600&seq=6&orientation=landscape',
-                    title: 'Instalación de paredes exteriores',
-                    description: 'Comenzamos a cerrar las cabañas con las paredes exteriores. Utilizamos madera tratada de alta calidad que ofrece un excelente aislamiento térmico y acústico, además de una estética natural que se integra perfectamente con el entorno.',
-                    tag: 'Estructura',
-                    tagClass: 'bg-orange-100 text-orange-800',
-                    date: '5 junio 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=cabin%20interior%20construction%2C%20workers%20installing%20insulation%20and%20interior%20walls%2C%20wooden%20cabin%20interior%20framing%2C%20electrical%20wiring%20installation%2C%20construction%20site%20interior%2C%20professional%20photography&width=800&height=600&seq=7&orientation=landscape',
-                    title: 'Instalaciones eléctricas y fontanería',
-                    description: 'Trabajamos en las instalaciones básicas para las cabañas. Implementamos sistemas eléctricos eficientes y soluciones de fontanería sostenibles que garantizan el confort mientras minimizan el consumo de recursos.',
-                    tag: 'Instalaciones',
-                    tagClass: 'bg-purple-100 text-purple-800',
-                    date: '20 julio 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20interior%20finishing%2C%20workers%20installing%20wooden%20interior%20walls%20and%20flooring%2C%20cabin%20interior%20construction%2C%20almost%20complete%20interior%2C%20warm%20wooden%20tones%2C%20professional%20photography&width=800&height=600&seq=8&orientation=landscape',
-                    title: 'Acabados interiores',
-                    description: 'Comenzamos con los acabados interiores de las cabañas. Seleccionamos materiales naturales y cálidos que crean un ambiente acogedor y relajante, con especial atención a los detalles que marcan la diferencia en la experiencia del usuario.',
-                    tag: 'Acabados',
-                    tagClass: 'bg-red-100 text-red-800',
-                    date: '15 septiembre 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20bathroom%20installation%2C%20workers%20installing%20bathroom%20fixtures%2C%20tiling%2C%20shower%20installation%2C%20cabin%20interior%20construction%2C%20modern%20rustic%20bathroom%20design%2C%20professional%20photography&width=800&height=600&seq=9&orientation=landscape',
-                    title: 'Instalación de baños',
-                    description: 'Instalamos los baños completos en cada cabaña. Combinamos funcionalidad y estética con equipamiento moderno que se integra armoniosamente con el estilo rústico de las cabañas, ofreciendo todas las comodidades necesarias.',
-                    tag: 'Acabados',
-                    tagClass: 'bg-red-100 text-red-800',
-                    date: '10 octubre 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20kitchen%20installation%2C%20workers%20installing%20kitchen%20cabinets%20and%20countertops%2C%20rustic%20modern%20kitchen%20design%2C%20cabin%20interior%2C%20almost%20complete%20kitchen%2C%20professional%20photography&width=800&height=600&seq=10&orientation=landscape',
-                    title: 'Instalación de cocinas',
-                    description: 'Montamos las cocinas completas en cada cabaña. Diseñadas para ser funcionales y acogedoras, cada cocina está equipada con electrodomésticos eficientes y acabados de alta calidad que combinan perfectamente con el estilo general de las cabañas.',
-                    tag: 'Acabados',
-                    tagClass: 'bg-red-100 text-red-800',
-                    date: '5 noviembre 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=wooden%20cabin%20exterior%20finishing%2C%20workers%20painting%20and%20finishing%20wooden%20cabin%20exterior%2C%20deck%20construction%2C%20mountain%20setting%2C%20almost%20complete%20cabin%2C%20professional%20photography&width=800&height=600&seq=11&orientation=landscape',
-                    title: 'Acabados exteriores',
-                    description: 'Trabajamos en los acabados exteriores y terrazas. Creamos espacios al aire libre que permiten disfrutar plenamente del entorno natural, con terrazas de madera tratada y detalles que mejoran tanto la funcionalidad como la estética de las cabañas.',
-                    tag: 'Acabados',
-                    tagClass: 'bg-red-100 text-red-800',
-                    date: '20 diciembre 2024'
-                },
-                {
-                    img: 'https://readdy.ai/api/search-image?query=completed%20wooden%20cabins%20in%20mountain%20setting%2C%20beautiful%20finished%20wooden%20cabins%20with%20deck%2C%20natural%20landscape%2C%20sunny%20day%2C%20professional%20photography%20of%20luxury%20rustic%20cabins%2C%20final%20result&width=800&height=600&seq=12&orientation=landscape',
-                    title: 'Proyecto completado',
-                    description: 'Nuestras cabañas están finalmente terminadas y listas para disfrutar. El resultado final es un conjunto de cabañas que se integran perfectamente con el entorno natural, ofreciendo confort y una experiencia única para quienes buscan desconectar y reconectar con la naturaleza.',
-                    tag: 'Finalizado',
-                    tagClass: 'bg-indigo-100 text-indigo-800',
-                    date: '15 febrero 2025'
-                }
-            ];
-            
-        });
-    </script>
+    <!-- Script único (menú + vista grid/timeline) -->
+    <script src="script.js" defer></script>
 </body>
 </html>
