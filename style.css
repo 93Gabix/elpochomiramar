@@ -1064,3 +1064,4 @@ input:checked+.switch-slider {
 input:checked+.switch-slider:before {
     transform: translateX(26px);
 }
+
