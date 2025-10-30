@@ -1065,3 +1065,123 @@ input:checked+.switch-slider:before {
     transform: translateX(26px);
 }
 
+/* MENSAJE FINAL */
+.mensaje-final {
+    max-width: 1200px;
+    margin: 30px auto 60px;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f5f0 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mensaje-final::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5a7052 0%, #8b4513 50%, #5a7052 100%);
+}
+
+.mensaje-final-icono {
+    font-size: 3rem;
+    color: #5a7052;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mensaje-final-titulo {
+    font-size: 2rem;
+    font-family: 'Georgia', serif;
+    color: #3a2a18;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.mensaje-final-texto {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 25px;
+}
+
+.mensaje-final-separador {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #8b4513, transparent);
+    margin: 30px auto;
+}
+
+.mensaje-final-subtexto {
+    font-size: 0.95rem;
+    color: #8b4513;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* RESPONSIVO MENSAJE FINAL */
+@media (max-width: 1210px) {
+    .mensaje-final {
+        padding: 40px 20px;
+        margin: 30px 17px 40px;
+    }
+
+    .mensaje-final-icono {
+        font-size: 2.5rem;
+    }
+
+    .mensaje-final-titulo {
+        font-size: 1.6rem;
+    }
+
+    .mensaje-final-texto {
+        font-size: 1.1rem;
+    }
+
+    .mensaje-final-subtexto {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mensaje-final {
+        padding: 30px 20px;
+        margin: 30px 17px 30px;
+        border-radius: 10px;
+    }
+
+    .mensaje-final-icono {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .mensaje-final-titulo {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    .mensaje-final-texto {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .mensaje-final-separador {
+        width: 80px;
+        margin: 20px auto;
+    }
+
+    .mensaje-final-subtexto {
+        font-size: 0.85rem;
+    }
+}
